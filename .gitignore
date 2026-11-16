@@ -1,0 +1,10 @@
+# Receipts show the computer name. Keep them off GitHub.
+receipts/
+
+# Office temp and lock files
+~$*
+
+# Windows and OneDrive clutter
+Thumbs.db
+desktop.ini
+.claude/

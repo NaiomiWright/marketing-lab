@@ -7,4 +7,7 @@ receipts/
 # Windows and OneDrive clutter
 Thumbs.db
 desktop.ini
-.claude/
+
+# Claude Code settings stay private. Only the campaign-kit skill is shared.
+.claude/*
+!.claude/skills/

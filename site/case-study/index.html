@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case study | A calmer Christmas | Naiomi Wright</title>
+  <meta name="description" content="How Naiomi Wright planned and built a full four-week campaign for a made-up dog chew in seven days, using Claude Code. Portfolio project. The brand and the numbers are made up.">
+  <meta property="og:title" content="Case study: a whole campaign in seven days, by Naiomi Wright">
+  <meta property="og:description" content="Brief, Excel plan, external and internal packs, a live landing page and a results dashboard. Portfolio project. The brand and the numbers are made up.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://naiomiwright.github.io/marketing-lab/hero-web.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* Same colours and fonts as the landing page and the dashboard. */
+    :root {
+      --cream: #f8f1e4;
+      --paper: #fffaf1;
+      --green: #1e3a2c;
+      --green-soft: #2f5a44;
+      --berry: #a3322f;
+      --gold: #c9973f;
+      --ink: #24201b;
+      --muted: #5a5247;
+      --line: #e6dac4;
+      --radius: 18px;
+      --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 1.0625rem; line-height: 1.65; }
+    img { display: block; max-width: 100%; height: auto; }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0; color: var(--green); }
+    p, ul, ol { margin: 0; }
+    a { color: var(--green-soft); text-underline-offset: 3px; }
+    a:hover { color: var(--berry); }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    .wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top bar */
+    .top { background: var(--green); color: var(--paper); }
+    .top .wrap { max-width: 1080px; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; padding-top: 14px; padding-bottom: 14px; }
+    .me { font-family: var(--serif); font-size: 1.25rem; color: var(--paper); text-decoration: none; }
+    .me strong { color: #f0c877; }
+    .top a.site { color: #f0c877; font-weight: 600; }
+    .lights { height: 10px; background: radial-gradient(circle, #f0c877 0 3px, transparent 3.5px) 0 50% / 28px 10px repeat-x, var(--green); }
+
+    /* Intro */
+    .intro { padding-top: 36px; padding-bottom: 8px; }
+    .eyebrow { display: inline-block; margin-bottom: 12px; padding: 4px 12px; border-radius: 999px; background: var(--green); color: var(--paper); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; }
+    h1 { font-size: clamp(1.8rem, 6.4vw, 2.7rem); text-wrap: balance; }
+    .lede { margin-top: 14px; font-size: 1.15rem; color: var(--muted); }
+
+    .madeup { margin-top: 20px; padding: 14px 16px; border-left: 5px solid var(--gold); border-radius: 8px; background: #f6ead2; }
+    .madeup strong { color: var(--ink); }
+
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .btn { display: inline-flex; align-items: center; min-height: 48px; padding: 10px 20px; border-radius: 999px; background: var(--berry); color: #fffaf1; font-weight: 700; text-decoration: none; }
+    .btn:hover { background: #84231f; color: #fffaf1; }
+    .btn.ghost { background: transparent; color: var(--green); border: 2px solid var(--green); }
+    .btn.ghost:hover { background: var(--green); color: var(--paper); }
+
+    /* Contents */
+    nav.toc { margin-top: 24px; padding: 16px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+    nav.toc h2 { font-size: 1rem; font-family: var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    nav.toc ol { margin-top: 8px; padding-left: 1.3em; columns: 2 220px; column-gap: 24px; }
+    nav.toc li { margin: 2px 0; }
+
+    /* Sections */
+    section { padding: 34px 0 6px; }
+    section > .wrap > h2 { font-size: clamp(1.45rem, 5vw, 1.9rem); }
+    .num { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-right: 8px; border-radius: 50%; background: var(--green); color: #f0c877; font: 700 1rem/1 var(--serif); vertical-align: 3px; }
+    section p { margin-top: 12px; }
+    section ul, section ol { margin-top: 12px; padding-left: 1.3em; }
+    section li { margin-top: 6px; }
+    h3 { font-size: 1.15rem; margin-top: 22px; }
+
+    .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 16px; }
+    .fact { padding: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .fact .v { font: 700 1.5rem/1.1 var(--serif); color: var(--green); font-variant-numeric: tabular-nums; }
+    .fact .l { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+
+    .days { list-style: none; padding: 0 !important; margin-top: 16px; display: grid; gap: 10px; }
+    .days li { margin: 0; display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
+    .days .d { font: 700 0.95rem/1.2 var(--serif); color: var(--berry); }
+    .days p { margin: 0; }
+
+    figure { margin: 18px 0 0; }
+    figure img { border-radius: 14px; box-shadow: 0 10px 28px rgba(36, 32, 27, 0.14); }
+    figcaption { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+    .pics { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 4px; }
+    .pics figure { min-width: 0; }
+
+    blockquote { margin: 14px 0 0; padding: 12px 16px; border-left: 4px solid var(--green-soft); background: var(--paper); border-radius: 8px; font-family: var(--serif); font-size: 1.1rem; }
+
+    .tablewrap { overflow-x: auto; margin-top: 14px; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; font-variant-numeric: tabular-nums; background: var(--paper); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; background: #f3e9d6; }
+
+    .change { margin-top: 12px; padding: 14px 16px; background: var(--paper); border: 1px solid var(--line); border-left: 5px solid var(--berry); border-radius: 12px; }
+    .change h3 { margin: 0; font-size: 1.05rem; }
+    .change p { margin-top: 6px; }
+
+    .end { padding-top: 36px; padding-bottom: 44px; }
+    .card { padding: 22px 20px; background: var(--paper); border: 1px solid var(--line); border-top: 6px solid var(--berry); border-radius: var(--radius); }
+    .card h2 { font-size: 1.4rem; }
+
+    footer { background: var(--green); color: var(--paper); padding: 26px 0 30px; text-align: center; font-size: 0.95rem; }
+    footer a { color: #f0c877; }
+
+    @media (min-width: 720px) {
+      .facts { grid-template-columns: repeat(4, 1fr); }
+      .pics { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .pics figure:first-child { grid-column: 1 / -1; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="me" href="https://naiomiwright.com">Naiomi <strong>Wright</strong></a>
+      <a class="site" href="https://naiomiwright.com">naiomiwright.com</a>
+    </div>
+  </header>
+  <div class="lights" aria-hidden="true"></div>
+
+  <main>
+    <div class="wrap intro">
+      <p class="eyebrow">Portfolio case study</p>
+      <h1>A whole campaign in seven days: A calmer Christmas</h1>
+      <p class="lede">I am Naiomi Wright, a brand and product marketer in animal health. This is how I planned and built a full four-week campaign, from the brief to the results, in one week, using Claude Code.</p>
+
+      <p class="madeup"><strong>The brand and the numbers are made up.</strong> Brackenfold Pet Health and Brackenfold Settle do not exist. Every budget, target and result on this page was made up for practice. Nothing here comes from any employer.</p>
+
+      <div class="links">
+        <a class="btn" href="../">See the landing page</a>
+        <a class="btn ghost" href="../dashboard/">See the results dashboard</a>
+      </div>
+
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title">On this page</h2>
+        <ol>
+          <li><a href="#brief">The brief</a></li>
+          <li><a href="#seven-days">What I built in seven days</a></li>
+          <li><a href="#plan">The plan</a></li>
+          <li><a href="#external">The external campaign</a></li>
+          <li><a href="#internal">The internal pack</a></li>
+          <li><a href="#dashboard">The dashboard</a></li>
+          <li><a href="#change">What I would change</a></li>
+          <li><a href="#claude-code">How I used Claude Code</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- 1. The brief -->
+    <section id="brief">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">1</span>The brief</h2>
+        <p>Brackenfold Pet Health is a made-up UK company, and Brackenfold Settle is its made-up chew for dogs. The job was a four-week Christmas campaign to get dog owners and vet practices to sign up for a free sample, and I wanted the dog's interests at the heart of everything, so owners could enjoy Christmas Day without worrying about their dog.</p>
+        <div class="facts">
+          <div class="fact"><div class="v">4 weeks</div><div class="l">23 Nov to 20 Dec 2026</div></div>
+          <div class="fact"><div class="v">£5,000</div><div class="l">Budget (made up)</div></div>
+          <div class="fact"><div class="v">600</div><div class="l">Sample sign-ups goal (made up)</div></div>
+          <div class="fact"><div class="v">5</div><div class="l">Channels</div></div>
+        </div>
+        <p>There were four audiences, and each one got its own message, because the same product means something different to each of them:</p>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Audience</th><th>The one message</th></tr></thead>
+            <tbody>
+              <tr><td>Dog owners</td><td>A festive treat made for your dog, so you can both enjoy Christmas Day.</td></tr>
+              <tr><td>Vet practices</td><td>Try Brackenfold Settle free this Christmas, and see if it suits the dogs you care for.</td></tr>
+              <tr><td>Sales team of eight</td><td>Everything you need to sell Settle: samples, clear literature and answers to the top questions.</td></tr>
+              <tr><td>Customer care</td><td>You hear it first: dates, stock levels and the sample process, before any customer calls.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>I also set the rules for all copy on day one. No medical claims, no saying it reduces stress or anxiety, no safety wording until it has been checked, and never naming another product. That rule came back to save me later in the week.</p>
+      </div>
+    </section>
+
+    <!-- 2. Seven days -->
+    <section id="seven-days">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">2</span>What I built in seven days</h2>
+        <p>I worked on it in short sessions, most of them under an hour, and every day ended with something real saved, checked and pushed to GitHub.</p>
+        <ol class="days">
+          <li><span class="d">Mon</span><p>Set up the project folder, my rules file, my skills and my GitHub account, and tested that Claude Code could make real Excel, Word and PowerPoint files.</p></li>
+          <li><span class="d">Tue</span><p>Wrote the brief and built the Excel plan: five tabs, with every total worked out by a formula.</p></li>
+          <li><span class="d">Wed</span><p>Made three campaign images, wrote nine emails and posts, ran a brand review and built a 14-page sign-off pack in Word.</p></li>
+          <li><span class="d">Thu</span><p>Built the landing page, put it live on GitHub Pages and added a tracked link for every external item on the calendar.</p></li>
+          <li><span class="d">Fri</span><p>Built the internal launch pack: my launch email, a one-page sales briefing, a customer care FAQ and a five-slide deck.</p></li>
+          <li><span class="d">Sun</span><p>Turned a made-up results file into a results workbook, a live dashboard and a readout of what worked.</p></li>
+          <li><span class="d">Sun</span><p>Turned the whole week into a repeatable skill, tested it on a second made-up product, and wrote this page.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 3. The plan -->
+    <section id="plan">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">3</span>The plan</h2>
+        <p>The plan is a real Excel workbook with five tabs: Brief, Audiences, Calendar, Budget and Targets. I set it up the way I would want to hand it to a director, so the blue numbers are the ones you can change and everything in black is a formula, and if you change one cost the totals and the cost per sign-up all move with it.</p>
+        <ul>
+          <li><strong>Budget:</strong> £5,000 across nine lines, with the shared costs (samples, postage, design and print) split across the five channels, and a check row that shows the total equals the budget.</li>
+          <li><strong>Targets:</strong> a funnel for each channel, from people reached to clicks to sign-ups, worked backwards so the five channels add up to the 600 goal.</li>
+          <li><strong>Calendar:</strong> every email, post, briefing and weekly update, with an owner, a status and a tracked link, and the internal items dated before anything goes out to customers.</li>
+        </ul>
+        <p><a href="https://github.com/NaiomiWright/marketing-lab/blob/main/plan/campaign-plan.xlsx">Download the plan workbook</a> or <a href="https://github.com/NaiomiWright/marketing-lab/blob/main/plan/brief.md">read the brief</a>.</p>
+      </div>
+    </section>
+
+    <!-- 4. External -->
+    <section id="external">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">4</span>The external campaign</h2>
+        <p>I made the images in ChatGPT, then Claude Code brought them into the project, made web-sized copies and wrote a description of each one for people who cannot see them. The dog is called Bramble.</p>
+        <div class="pics">
+          <figure>
+            <img src="../hero-web.jpg" width="1600" height="900" loading="lazy"
+                 alt="A black and white border collie lies on a cream knitted blanket, holding a chew between its front paws and smiling at the camera. Behind it, a fire glows, a Christmas tree twinkles with gold lights, and a family laughs together on the sofa.">
+            <figcaption>The hero image, used on the landing page.</figcaption>
+          </figure>
+          <figure>
+            <img src="social-square-web.jpg" width="1080" height="1080" loading="lazy"
+                 alt="A happy black and white border collie in a green collar lies on a wooden floor among torn red wrapping paper and green ribbon, with a chew between its paws. A Christmas tree with warm lights and wrapped presents glows behind it.">
+            <figcaption>The square image for Facebook and Instagram.</figcaption>
+          </figure>
+          <figure>
+            <img src="email-banner-web.jpg" width="1200" height="675" loading="lazy"
+                 alt="A black and white border collie rests its head on its paws on a cream rug in a festive hallway. Behind it are coats on hooks, wrapped presents on a wooden bench, and a garland of greenery with warm fairy lights.">
+            <figcaption>The email banner, used at the top of the emails.</figcaption>
+          </figure>
+        </div>
+        <p>From those, I built nine pieces across five channels: three emails to dog owners, one to vet practices, two Facebook posts, one Instagram post and two LinkedIn posts. They all went into one Word pack, with each image next to its copy, so a head of marketing could sign the whole thing off in one go.</p>
+        <h3>The brand review caught something I missed</h3>
+        <p>My first launch email opened with a busy, noisy house at Christmas, and then offered a product called Settle. Every line on its own was fine, but read together, it hinted that the chew calms a stressed dog, and that is exactly the claim my own rules ruled out. UK advertising rules judge the overall impression, not just the words, so I rewrote the opening around family instead:</p>
+        <blockquote>It is a time for the whole family. And your dog is part of the family.</blockquote>
+        <p>Then I built the <a href="../">landing page</a> in the same colours as the hero image, and gave every external item on the calendar its own tracked link, so you can see which email or post each sign-up came from.</p>
+      </div>
+    </section>
+
+    <!-- 5. Internal -->
+    <section id="internal">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">5</span>The internal pack</h2>
+        <p>In my real job, I have learned that a launch goes wrong when the sales team or customer care hear about it from a customer first, so the internal pack was dated to land before anything went out.</p>
+        <ul>
+          <li><strong>A launch email to the teams,</strong> written in my own voice.</li>
+          <li><strong>A one-page sales briefing,</strong> with the three things to say and the three questions they will get, including "Does it calm dogs down?" and the honest answer.</li>
+          <li><strong>A customer care FAQ</strong> with ten questions on dates, stock levels and the sample process, and any health question goes to the vet.</li>
+          <li><strong>A five-slide deck</strong> for the Monday team meeting: the goal, who we are talking to, the calendar, what I need from each team, and how we will measure it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. Dashboard -->
+    <section id="dashboard">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">6</span>The dashboard</h2>
+        <p>I made up a results file for the four weeks, one row per item per day, and built a results workbook and a <a href="../dashboard/">live dashboard</a> from it, in the same look as the landing page, so I could take it into any team meeting and everyone could read it straight away.</p>
+        <div class="facts">
+          <div class="fact"><div class="v">484</div><div class="l">Sign-ups, against 600 (made up)</div></div>
+          <div class="fact"><div class="v">253</div><div class="l">From email to dog owners (made up)</div></div>
+          <div class="fact"><div class="v">71p</div><div class="l">Cost per sign-up, owner email (made up)</div></div>
+          <div class="fact"><div class="v">£48.53</div><div class="l">Cost per sign-up, Instagram (made up)</div></div>
+        </div>
+        <p>Then I answered three questions myself, in my own words, before I read Claude's answers: what worked, what did not, and where I would move the money. We agreed on the big picture. Email to dog owners was the winner, and Instagram was the clear miss, spending more than twice its budget for 30 sign-ups.</p>
+        <p>But Claude also caught two things I had got wrong. I had called LinkedIn free, when the file just showed £0 spend against a £450 plan, so that needed checking before anyone called it free. And the figures I quoted for week three were really the four-week totals. That is exactly why I check the numbers before they go into a meeting.</p>
+        <p><a href="https://github.com/NaiomiWright/marketing-lab/blob/main/data/readout.md">Read the full readout</a>.</p>
+      </div>
+    </section>
+
+    <!-- 7. What I would change -->
+    <section id="change">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">7</span>What I would change</h2>
+        <div class="change">
+          <h3>Pick a name that cannot make a claim</h3>
+          <p>"Settle" and "A calmer Christmas" kept pulling the copy towards a calming claim that the brief did not allow. Next time I would test the product and campaign names against the copy rules on day one, before anything is written.</p>
+        </div>
+        <div class="change">
+          <h3>Send every planned email</h3>
+          <p>Week two had no email at all, and it was the weakest week. The vet email also went out once, not three times. Email was the best channel, so I would protect those sends first.</p>
+        </div>
+        <div class="change">
+          <h3>Pause Instagram, or test new creative small</h3>
+          <p>It spent the most for the fewest sign-ups. I would move that money into growing the email list and improving the sign-up form, because the sign-up rate was below target on every channel.</p>
+        </div>
+        <div class="change">
+          <h3>Agree the results file before the campaign starts</h3>
+          <p>The £0 LinkedIn spend showed me the tracking has to be agreed up front, so every channel's real cost lands in the same file.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Claude Code -->
+    <section id="claude-code">
+      <div class="wrap">
+        <h2><span class="num" aria-hidden="true">8</span>How I used Claude Code to do it</h2>
+        <p>I am new to code, so I often talked to Claude Code by voice and asked it to work in short, plain steps, one question at a time. I stayed the marketer the whole way through. I wrote the brief, chose the messages, made the images, approved every piece of copy and answered the results questions myself, and Claude Code did the building.</p>
+        <ul>
+          <li><strong>Rules first.</strong> I wrote a rules file that Claude Code reads before every job: plain English, British spelling, never invent a number, nothing private, and ask me before anything is published.</li>
+          <li><strong>Real files, not chat.</strong> It drove Excel, Word and PowerPoint on my own computer, so everything is a real file I can open, with real formulas.</li>
+          <li><strong>Skills.</strong> I used skills for the campaign plan, brand review and performance report, and I built my own: one for tracked links, one for launch emails in my voice, and one called campaign-kit that repeats this whole week for any product.</li>
+          <li><strong>Proof every day.</strong> Each day ended with a short checklist of what was made and how it was checked, like the cell that holds the budget total or the page count of the sales briefing.</li>
+          <li><strong>I checked its work.</strong> The brand review, the numbers in the readout and the claims in every piece were all checked by me before I said yes.</li>
+        </ul>
+        <h3>What went wrong, and what I learned from it</h3>
+        <p>Not everything worked first time, and I think that is the useful part. Excel scripts failed a few times before the formulas went in properly, an update to the calendar left eight rows blank and it was only caught when I checked the day's work, and I changed "festive" to "Christmas" on the live page and then changed it straight back, because it no longer matched the brief. Every one of those is now written into the campaign-kit skill as a lesson, with the fix, so it does not happen twice.</p>
+        <p>To test the campaign-kit skill, I gave it a short brief for a second made-up product, a joint supplement for older cats, and it built the plan and three owner emails in about four and a half minutes. It also marked everything it had to guess as "to confirm", which is exactly what I wanted.</p>
+        <p><a href="https://github.com/NaiomiWright/marketing-lab">See everything on GitHub</a>.</p>
+      </div>
+    </section>
+
+    <div class="wrap end">
+      <div class="card">
+        <h2>Thank you for reading</h2>
+        <p style="margin-top:10px">I am looking for a brand or campaign marketing role in animal health, pet care, equine, zoos or conservation. My CV and contact details are on <a href="https://naiomiwright.com">naiomiwright.com</a>.</p>
+        <div class="links">
+          <a class="btn" href="../">Landing page</a>
+          <a class="btn ghost" href="../dashboard/">Results dashboard</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Portfolio project by Naiomi Wright. Brackenfold Settle is a made-up product.</p>
+      <p style="margin-top:6px">All numbers on this page are made up. <a href="https://naiomiwright.com">naiomiwright.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>

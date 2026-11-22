@@ -12,7 +12,7 @@ In November I gave myself seven days to run a whole campaign for a made-up dog c
 
 I wrote the brief and chose the message for each audience, and it built the rest, so the Excel plan with real formulas, the emails and posts, the sales briefing and deck, a live landing page with tracked links and a results dashboard.
 
-The part I am proudest of is the checking. I gave it rules on day one, no medical claims and never invent a number, and its brand review caught a hidden calming claim in my own launch email. It caught me out on the results too, I had called one channel free when the spend just was not in the file.
+The part I am proudest of is the checking. I gave it rules on day one, no medical claims and never invent a number, and its brand review caught a hidden calming claim in my own launch email. It checked my numbers too. I said one channel cost nothing, but the cost was just missing from the results.
 
 Then I turned the whole week into a skill, and I tested it on a second product. It built the plan and three emails in under five minutes.
 

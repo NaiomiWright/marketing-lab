@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brackenfold Settle | Campaign results</title>
+  <meta name="description" content="Results dashboard for the Brackenfold Settle sample campaign, 23 November to 20 December 2026. Portfolio project by Naiomi Wright. The brand and the numbers are made up.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* Same colours and fonts as the landing page (site/index.html). */
+    :root {
+      --cream: #f8f1e4;
+      --paper: #fffaf1;
+      --green: #1e3a2c;
+      --green-soft: #2f5a44;
+      --berry: #a3322f;
+      --berry-dark: #84231f;
+      --gold: #c9973f;
+      --ink: #24201b;
+      --muted: #5a5247;
+      --line: #e6dac4;
+      --grid: #eee4d2;
+      --radius: 18px;
+      --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.5; }
+    h1, h2, h3 { font-family: var(--serif); line-height: 1.2; margin: 0; color: var(--green); }
+    p { margin: 0; }
+    .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    /* Top bar, as on the landing page */
+    .top { background: var(--green); color: var(--paper); }
+    .top .wrap { display: flex; align-items: center; gap: 10px; padding-top: 14px; padding-bottom: 14px; }
+    .brand { font-family: var(--serif); font-size: 1.2rem; }
+    .brand strong { color: #f0c877; }
+    .paw { width: 22px; height: 22px; flex: none; fill: #f0c877; }
+    .lights { height: 10px; background: radial-gradient(circle, #f0c877 0 3px, transparent 3.5px) 0 50% / 28px 10px repeat-x, var(--green); }
+
+    .intro { padding: 28px 0 8px; }
+    h1 { font-size: clamp(1.6rem, 5.6vw, 2.4rem); }
+    .lede { margin-top: 8px; color: var(--muted); }
+
+    /* Audience filter */
+    .filter { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 18px 0 6px; }
+    .filter span { font-weight: 600; margin-right: 4px; }
+    .chip { min-height: 44px; padding: 8px 16px; border: 2px solid var(--green); border-radius: 999px; background: var(--paper); color: var(--green); font: 600 0.95rem/1 var(--sans); cursor: pointer; }
+    .chip[aria-pressed="true"] { background: var(--green); color: var(--paper); }
+
+    /* Headline numbers */
+    .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 14px; }
+    .tile { padding: 16px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); }
+    .tile .label { font-size: 0.9rem; color: var(--muted); }
+    .tile .value { font: 700 clamp(1.6rem, 6vw, 2.2rem)/1.1 var(--serif); color: var(--green); margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .tile .sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+    /* Best and worst */
+    .items { display: grid; gap: 12px; margin-top: 12px; }
+    .item { padding: 16px; background: var(--paper); border: 1px solid var(--line); border-left: 6px solid var(--green-soft); border-radius: var(--radius); }
+    .item.worst { border-left-color: var(--berry); }
+    .item .label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+    .item .name { font: 700 1.25rem/1.25 var(--serif); color: var(--ink); margin-top: 2px; }
+    .item .sub { color: var(--muted); margin-top: 2px; }
+
+    /* Charts */
+    .charts { display: grid; gap: 12px; margin: 12px 0 28px; }
+    .card { padding: 18px 16px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); position: relative; }
+    .card h2 { font-size: 1.2rem; }
+    .card .note { font-size: 0.85rem; color: var(--muted); margin-top: 2px; }
+    .chart { margin-top: 12px; }
+    .chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .chart text { font-family: var(--sans); font-size: 13px; fill: var(--muted); }
+    .chart .val { fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .chart .hit { fill: transparent; cursor: default; }
+    .chart .bar { transition: opacity 0.1s; }
+    .chart g.row:hover .bar, .chart g.row:focus .bar { opacity: 0.8; }
+    .chart g.row:focus { outline: none; }
+    .chart g.row:focus .hit { stroke: var(--gold); stroke-width: 2; }
+
+    .tip { position: absolute; pointer-events: none; padding: 8px 10px; background: var(--ink); color: var(--paper); border-radius: 8px; font-size: 0.85rem; line-height: 1.35; white-space: nowrap; box-shadow: 0 4px 14px rgba(36,32,27,.2); z-index: 5; }
+    .tip b { font-weight: 700; }
+
+    details { margin-top: 10px; }
+    summary { cursor: pointer; color: var(--green-soft); font-weight: 600; font-size: 0.9rem; min-height: 32px; }
+    .tablewrap { overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin-top: 6px; font-variant-numeric: tabular-nums; }
+    th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--muted); font-weight: 600; }
+
+    .about { padding: 0 0 32px; color: var(--muted); font-size: 0.9rem; }
+    .about li { margin-top: 4px; }
+
+    footer { background: var(--green); color: var(--paper); padding: 26px 0 30px; text-align: center; font-size: 0.95rem; }
+
+    @media (min-width: 820px) {
+      .tiles { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .items { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .charts { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .charts .wide { grid-column: 1 / -1; }
+      .card { padding: 22px 22px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .chart .bar { transition: none; } }
+    @media (forced-colors: active) { .chart .bar { fill: CanvasText; } }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <svg class="paw" viewBox="0 0 24 24" aria-hidden="true">
+        <ellipse cx="5.2" cy="10.2" rx="2.1" ry="2.8"/>
+        <ellipse cx="9.6" cy="5.8" rx="2.1" ry="2.9"/>
+        <ellipse cx="14.4" cy="5.8" rx="2.1" ry="2.9"/>
+        <ellipse cx="18.8" cy="10.2" rx="2.1" ry="2.8"/>
+        <path d="M12 11.2c-3.2 0-6 3.1-6 5.9 0 1.8 1.4 2.9 3.1 2.9 1.2 0 1.9-.6 2.9-.6s1.7.6 2.9.6c1.7 0 3.1-1.1 3.1-2.9 0-2.8-2.8-5.9-6-5.9z"/>
+      </svg>
+      <span class="brand">Brackenfold <strong>Settle</strong></span>
+    </div>
+  </header>
+  <div class="lights" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Free sample campaign: results</h1>
+      <p class="lede">23 November to 20 December 2026. Four weeks, four channels, two audiences.</p>
+
+      <div class="filter" role="group" aria-label="Filter by audience">
+        <span>Audience:</span>
+        <button class="chip" type="button" data-aud="All" aria-pressed="true">Everyone</button>
+        <button class="chip" type="button" data-aud="Dog owners" aria-pressed="false">Dog owners</button>
+        <button class="chip" type="button" data-aud="Vet practices" aria-pressed="false">Vet practices</button>
+      </div>
+
+      <div class="tiles" aria-live="polite">
+        <div class="tile"><p class="label">People reached</p><p class="value" id="t-reach"></p><p class="sub" id="t-reach-sub"></p></div>
+        <div class="tile"><p class="label">Sign-ups</p><p class="value" id="t-signups"></p><p class="sub" id="t-signups-sub"></p></div>
+        <div class="tile"><p class="label">Spend on ads and email</p><p class="value" id="t-spend"></p><p class="sub" id="t-spend-sub"></p></div>
+        <div class="tile"><p class="label">Cost per sign-up</p><p class="value" id="t-cps"></p><p class="sub" id="t-cps-sub"></p></div>
+      </div>
+
+      <div class="items">
+        <div class="item"><p class="label">Best item: most sign-ups</p><p class="name" id="best-name"></p><p class="sub" id="best-sub"></p></div>
+        <div class="item worst"><p class="label">Worst item: highest cost per sign-up</p><p class="name" id="worst-name"></p><p class="sub" id="worst-sub"></p></div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="card">
+        <h2>Click rate by channel</h2>
+        <p class="note">Clicks divided by people reached.</p>
+        <div class="chart" id="c-click"></div>
+        <details><summary>Show as a table</summary><div class="tablewrap" id="tb-click"></div></details>
+      </div>
+      <div class="card">
+        <h2>Cost per sign-up by channel</h2>
+        <p class="note">Ads and email spend divided by sign-ups.</p>
+        <div class="chart" id="c-cps"></div>
+        <details><summary>Show as a table</summary><div class="tablewrap" id="tb-cps"></div></details>
+      </div>
+      <div class="card wide">
+        <h2>Sign-ups week by week</h2>
+        <p class="note">Emails went out in weeks 1, 3 and 4. Week 2 had no email.</p>
+        <div class="chart" id="c-week"></div>
+        <details><summary>Show as a table</summary><div class="tablewrap" id="tb-week"></div></details>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2 style="font-size:1.1rem">About these numbers</h2>
+      <ul>
+        <li>Portfolio project by Naiomi Wright. Brackenfold Settle is a made-up product.</li>
+        <li>All numbers are made up for practice.</li>
+        <li>Spend is advertising and email cost only. The rest of the £5,000 budget went on samples and design.</li>
+        <li>LinkedIn shows £0 spend in the results file, so its cost per sign-up shows £0.</li>
+        <li>Reach is added up day by day and send by send, so some people are counted more than once.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Portfolio project by Naiomi Wright. The brand and the numbers are made up.</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    // Each row: date, week, channel, audience, item, reached, opens, clicks, page visits, sign-ups, spend (£)
+    var ROWS = [
+      ["2026-11-23",1,"Email","Dog owners","Launch email",9000,1704,169,145,44,60],
+      ["2026-11-23",1,"Facebook","Dog owners","Facebook post 1",2369,0,37,31,6,38],
+      ["2026-11-23",1,"Instagram","Dog owners","Instagram post",2968,0,14,12,1,52],
+      ["2026-11-23",1,"LinkedIn","Vet practices","LinkedIn post 1",334,0,8,7,2,0],
+      ["2026-11-24",1,"Email","Dog owners","Launch email",0,505,49,42,13,0],
+      ["2026-11-24",1,"Facebook","Dog owners","Facebook post 1",2307,0,37,31,6,38],
+      ["2026-11-24",1,"Instagram","Dog owners","Instagram post",2889,0,12,10,1,52],
+      ["2026-11-24",1,"LinkedIn","Vet practices","LinkedIn post 1",376,0,9,8,2,0],
+      ["2026-11-25",1,"Email","Dog owners","Launch email",0,189,18,15,4,0],
+      ["2026-11-25",1,"Email","Vet practices","Vet practice email",800,269,55,47,19,60],
+      ["2026-11-25",1,"Facebook","Dog owners","Facebook post 1",2205,0,27,23,4,38],
+      ["2026-11-25",1,"Instagram","Dog owners","Instagram post",3075,0,16,13,1,52],
+      ["2026-11-25",1,"LinkedIn","Vet practices","LinkedIn post 1",350,0,7,6,2,0],
+      ["2026-11-26",1,"Email","Vet practices","Vet practice email",0,77,15,13,5,0],
+      ["2026-11-26",1,"Facebook","Dog owners","Facebook post 1",2144,0,31,26,5,38],
+      ["2026-11-26",1,"Instagram","Dog owners","Instagram post",2980,0,15,13,1,52],
+      ["2026-11-26",1,"LinkedIn","Vet practices","LinkedIn post 1",359,0,9,8,2,0],
+      ["2026-11-27",1,"Email","Vet practices","Vet practice email",0,31,6,5,2,0],
+      ["2026-11-27",1,"Facebook","Dog owners","Facebook post 1",2127,0,29,24,4,38],
+      ["2026-11-27",1,"Instagram","Dog owners","Instagram post",2995,0,17,14,1,52],
+      ["2026-11-27",1,"LinkedIn","Vet practices","LinkedIn post 1",366,0,9,8,2,0],
+      ["2026-11-28",1,"Facebook","Dog owners","Facebook post 1",2682,0,40,34,6,38],
+      ["2026-11-28",1,"Instagram","Dog owners","Instagram post",3318,0,17,14,1,52],
+      ["2026-11-28",1,"LinkedIn","Vet practices","LinkedIn post 1",153,0,3,3,1,0],
+      ["2026-11-29",1,"Facebook","Dog owners","Facebook post 1",2561,0,31,26,5,38],
+      ["2026-11-29",1,"Instagram","Dog owners","Instagram post",3456,0,19,16,1,52],
+      ["2026-11-29",1,"LinkedIn","Vet practices","LinkedIn post 1",165,0,4,3,1,0],
+      ["2026-11-30",2,"Facebook","Dog owners","Facebook post 1",2274,0,31,26,5,38],
+      ["2026-11-30",2,"Instagram","Dog owners","Instagram post",3148,0,16,13,1,52],
+      ["2026-11-30",2,"LinkedIn","Vet practices","LinkedIn post 1",333,0,6,5,1,0],
+      ["2026-12-01",2,"Facebook","Dog owners","Facebook post 1",2173,0,29,24,4,38],
+      ["2026-12-01",2,"Instagram","Dog owners","Instagram post",3195,0,18,15,1,52],
+      ["2026-12-01",2,"LinkedIn","Vet practices","LinkedIn post 1",328,0,8,7,2,0],
+      ["2026-12-02",2,"Facebook","Dog owners","Facebook post 1",2230,0,31,26,5,38],
+      ["2026-12-02",2,"Instagram","Dog owners","Instagram post",2912,0,16,13,1,52],
+      ["2026-12-02",2,"LinkedIn","Vet practices","LinkedIn post 1",325,0,7,6,2,0],
+      ["2026-12-03",2,"Facebook","Dog owners","Facebook post 1",2065,0,29,24,4,38],
+      ["2026-12-03",2,"Instagram","Dog owners","Instagram post",2807,0,15,13,1,52],
+      ["2026-12-03",2,"LinkedIn","Vet practices","LinkedIn post 1",342,0,8,7,2,0],
+      ["2026-12-04",2,"Facebook","Dog owners","Facebook post 1",2288,0,33,28,5,38],
+      ["2026-12-04",2,"Instagram","Dog owners","Instagram post",3137,0,16,13,1,52],
+      ["2026-12-04",2,"LinkedIn","Vet practices","LinkedIn post 1",323,0,7,6,2,0],
+      ["2026-12-05",2,"Facebook","Dog owners","Facebook post 1",2526,0,40,34,6,38],
+      ["2026-12-05",2,"Instagram","Dog owners","Instagram post",3424,0,20,17,2,52],
+      ["2026-12-05",2,"LinkedIn","Vet practices","LinkedIn post 1",153,0,3,3,1,0],
+      ["2026-12-06",2,"Facebook","Dog owners","Facebook post 1",2432,0,33,28,5,38],
+      ["2026-12-06",2,"Instagram","Dog owners","Instagram post",3708,0,20,17,2,52],
+      ["2026-12-06",2,"LinkedIn","Vet practices","LinkedIn post 1",153,0,3,3,1,0],
+      ["2026-12-07",3,"Email","Dog owners","Reminder email",9000,2292,269,231,76,60],
+      ["2026-12-07",3,"Facebook","Dog owners","Facebook post 2",2350,0,22,18,3,38],
+      ["2026-12-07",3,"Instagram","Dog owners","Instagram post",2990,0,9,8,1,52],
+      ["2026-12-07",3,"LinkedIn","Vet practices","LinkedIn post 2",375,0,8,7,2,0],
+      ["2026-12-08",3,"Email","Dog owners","Reminder email",0,587,75,64,21,0],
+      ["2026-12-08",3,"Facebook","Dog owners","Facebook post 2",2206,0,18,15,3,38],
+      ["2026-12-08",3,"Instagram","Dog owners","Instagram post",2888,0,10,8,1,52],
+      ["2026-12-08",3,"LinkedIn","Vet practices","LinkedIn post 2",367,0,7,6,2,0],
+      ["2026-12-09",3,"Email","Dog owners","Reminder email",0,230,31,27,9,0],
+      ["2026-12-09",3,"Facebook","Dog owners","Facebook post 2",2103,0,18,15,3,38],
+      ["2026-12-09",3,"Instagram","Dog owners","Instagram post",2806,0,10,8,1,52],
+      ["2026-12-09",3,"LinkedIn","Vet practices","LinkedIn post 2",351,0,8,7,2,0],
+      ["2026-12-10",3,"Facebook","Dog owners","Facebook post 2",2041,0,21,18,3,38],
+      ["2026-12-10",3,"Instagram","Dog owners","Instagram post",2957,0,10,8,1,52],
+      ["2026-12-10",3,"LinkedIn","Vet practices","LinkedIn post 2",341,0,8,7,2,0],
+      ["2026-12-11",3,"Facebook","Dog owners","Facebook post 2",2336,0,20,17,3,38],
+      ["2026-12-11",3,"Instagram","Dog owners","Instagram post",2767,0,8,7,1,52],
+      ["2026-12-11",3,"LinkedIn","Vet practices","LinkedIn post 2",360,0,7,6,2,0],
+      ["2026-12-12",3,"Facebook","Dog owners","Facebook post 2",2580,0,24,20,4,38],
+      ["2026-12-12",3,"Instagram","Dog owners","Instagram post",3495,0,13,11,1,52],
+      ["2026-12-12",3,"LinkedIn","Vet practices","LinkedIn post 2",155,0,3,3,1,0],
+      ["2026-12-13",3,"Facebook","Dog owners","Facebook post 2",2523,0,22,18,3,38],
+      ["2026-12-13",3,"Instagram","Dog owners","Instagram post",3220,0,12,10,1,52],
+      ["2026-12-13",3,"LinkedIn","Vet practices","LinkedIn post 2",168,0,3,3,1,0],
+      ["2026-12-14",4,"Facebook","Dog owners","Facebook post 2",2336,0,34,29,5,38],
+      ["2026-12-14",4,"Instagram","Dog owners","Instagram post",2879,0,15,13,1,52],
+      ["2026-12-14",4,"LinkedIn","Vet practices","LinkedIn post 2",353,0,9,8,2,0],
+      ["2026-12-15",4,"Facebook","Dog owners","Facebook post 2",2185,0,30,25,4,38],
+      ["2026-12-15",4,"Instagram","Dog owners","Instagram post",3121,0,18,15,1,52],
+      ["2026-12-15",4,"LinkedIn","Vet practices","LinkedIn post 2",347,0,8,7,2,0],
+      ["2026-12-16",4,"Facebook","Dog owners","Facebook post 2",2351,0,38,32,6,38],
+      ["2026-12-16",4,"Instagram","Dog owners","Instagram post",3081,0,16,13,1,52],
+      ["2026-12-16",4,"LinkedIn","Vet practices","LinkedIn post 2",333,0,8,7,2,0],
+      ["2026-12-17",4,"Email","Dog owners","Last chance email",9000,1993,231,199,62,60],
+      ["2026-12-17",4,"Facebook","Dog owners","Facebook post 2",2216,0,32,27,5,38],
+      ["2026-12-17",4,"Instagram","Dog owners","Instagram post",2834,0,13,11,1,52],
+      ["2026-12-17",4,"LinkedIn","Vet practices","LinkedIn post 2",371,0,7,6,2,0],
+      ["2026-12-18",4,"Email","Dog owners","Last chance email",0,575,63,54,17,0],
+      ["2026-12-18",4,"Facebook","Dog owners","Facebook post 2",2260,0,30,25,4,38],
+      ["2026-12-18",4,"Instagram","Dog owners","Instagram post",3040,0,16,13,1,52],
+      ["2026-12-18",4,"LinkedIn","Vet practices","LinkedIn post 2",352,0,8,7,2,0],
+      ["2026-12-19",4,"Email","Dog owners","Last chance email",0,213,24,21,7,0],
+      ["2026-12-19",4,"Facebook","Dog owners","Facebook post 2",2651,0,37,31,6,38],
+      ["2026-12-19",4,"Instagram","Dog owners","Instagram post",3698,0,18,15,1,52],
+      ["2026-12-19",4,"LinkedIn","Vet practices","LinkedIn post 2",158,0,4,3,1,0],
+      ["2026-12-20",4,"Facebook","Dog owners","Facebook post 2",2521,0,39,33,6,38],
+      ["2026-12-20",4,"Instagram","Dog owners","Instagram post",3572,0,16,13,1,52],
+      ["2026-12-20",4,"LinkedIn","Vet practices","LinkedIn post 2",149,0,4,3,1,0]
+    ];
+
+    // Sign-up targets from plan/campaign-plan.xlsx (Targets tab).
+    var GOAL = { 'All': 600, 'Dog owners': 510, 'Vet practices': 90 };
+    var CHANNELS = ['Email to dog owners', 'Email to vet practices', 'Facebook', 'Instagram', 'LinkedIn'];
+
+    var nf = new Intl.NumberFormat('en-GB');
+    function money(v, dp) { return '£' + v.toLocaleString('en-GB', { minimumFractionDigits: dp, maximumFractionDigits: dp }); }
+    function pct(v) { return (v * 100).toFixed(1) + '%'; }
+    function planChannel(r) { return r[2] === 'Email' ? 'Email to ' + r[3].toLowerCase() : r[2]; }
+    function blank() { return { reach: 0, opens: 0, clicks: 0, visits: 0, signups: 0, spend: 0 }; }
+    function add(t, r) { t.reach += r[5]; t.opens += r[6]; t.clicks += r[7]; t.visits += r[8]; t.signups += r[9]; t.spend += r[10]; }
+    function groupBy(rows, keyFn) {
+      var out = {}, order = [];
+      rows.forEach(function (r) { var k = keyFn(r); if (!out[k]) { out[k] = blank(); order.push(k); } add(out[k], r); });
+      return { map: out, order: order };
+    }
+    function el(id) { return document.getElementById(id); }
+
+    // ---------- Tooltip ----------
+    var tip = document.createElement('div');
+    tip.className = 'tip'; tip.hidden = true; tip.setAttribute('role', 'status');
+    document.body.appendChild(tip);
+    function showTip(html, target) {
+      tip.innerHTML = html; tip.hidden = false;
+      var b = target.getBoundingClientRect();
+      var x = b.left + window.scrollX + b.width / 2 - tip.offsetWidth / 2;
+      x = Math.max(8, Math.min(x, document.documentElement.clientWidth - tip.offsetWidth - 8));
+      tip.style.left = x + 'px';
+      tip.style.top = (b.top + window.scrollY - tip.offsetHeight - 8) + 'px';
+    }
+    function hideTip() { tip.hidden = true; }
+
+    var NS = 'http://www.w3.org/2000/svg';
+    function svgEl(name, attrs) { var e = document.createElementNS(NS, name); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+
+    // A bar with 4px rounded ends at the data end, square at the baseline.
+    function barPath(x, y, w, h, horizontal) {
+      var r = Math.min(4, horizontal ? h / 2 : w / 2, horizontal ? w : h);
+      if (w <= 0 || h <= 0) return '';
+      if (horizontal) return 'M' + x + ',' + y + 'h' + (w - r) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r + 'v' + (h - 2 * r) + 'a' + r + ',' + r + ' 0 0 1 ' + (-r) + ',' + r + 'h' + (-(w - r)) + 'z';
+      return 'M' + x + ',' + (y + h) + 'v' + (-(h - r)) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + (-r) + 'h' + (w - 2 * r) + 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r + 'v' + (h - r) + 'z';
+    }
+
+    // Horizontal bars: one row per channel. Names on the left, values at the bar end.
+    function hBars(host, data, fmt, colour, tipFn) {
+      host.innerHTML = '';
+      var W = Math.max(300, host.clientWidth || 520), labelW = W < 420 ? 150 : 168, rowH = 40, barH = 18, valW = 60;
+      var H = data.length * rowH + 4;
+      var max = Math.max.apply(null, data.map(function (d) { return d.v; })) || 1;
+      var plotW = W - labelW - valW;
+      var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': host.getAttribute('data-label') || '' });
+      svg.appendChild(svgEl('line', { x1: labelW, x2: labelW, y1: 0, y2: H, stroke: 'var(--line)', 'stroke-width': 1 }));
+      data.forEach(function (d, i) {
+        var y = i * rowH + 4, w = Math.max(d.v > 0 ? 2 : 0, d.v / max * plotW);
+        var g = svgEl('g', { 'class': 'row', tabindex: 0 });
+        var t = svgEl('text', { x: labelW - 10, y: y + barH / 2 + 5, 'text-anchor': 'end' }); t.textContent = d.k; g.appendChild(t);
+        if (w > 0) g.appendChild(svgEl('path', { 'class': 'bar', d: barPath(labelW, y, w, barH, true), fill: colour }));
+        var v = svgEl('text', { 'class': 'val', x: labelW + w + 8, y: y + barH / 2 + 5 }); v.textContent = fmt(d.v); g.appendChild(v);
+        var hit = svgEl('rect', { 'class': 'hit', x: 0, y: y - 8, width: W, height: rowH - 4, rx: 6 }); g.appendChild(hit);
+        g.addEventListener('mouseenter', function () { showTip(tipFn(d), hit); });
+        g.addEventListener('focus', function () { showTip(tipFn(d), hit); });
+        g.addEventListener('mouseleave', hideTip); g.addEventListener('blur', hideTip);
+        g.setAttribute('aria-label', d.k + ': ' + fmt(d.v));
+        svg.appendChild(g);
+      });
+      host.appendChild(svg);
+    }
+
+    // Vertical bars: one per week, with a light grid and a value on each bar.
+    function vBars(host, data, colour, tipFn) {
+      host.innerHTML = '';
+      var W = Math.max(300, host.clientWidth || 720), H = W < 500 ? 220 : 260, padL = 40, padB = 28, padT = 22;
+      var max = Math.max.apply(null, data.map(function (d) { return d.v; }));
+      var step = max > 100 ? 50 : max > 40 ? 20 : 10;
+      var top = Math.max(step, Math.ceil(max / step) * step);
+      var plotH = H - padB - padT, plotW = W - padL;
+      var slot = plotW / data.length, bw = Math.min(110, slot * 0.55);
+      var svg = svgEl('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Sign-ups week by week' });
+      for (var g0 = 0; g0 <= top; g0 += step) {
+        var gy = padT + plotH - g0 / top * plotH;
+        svg.appendChild(svgEl('line', { x1: padL, x2: W, y1: gy, y2: gy, stroke: g0 === 0 ? 'var(--line)' : 'var(--grid)', 'stroke-width': 1 }));
+        var gt = svgEl('text', { x: padL - 8, y: gy + 4, 'text-anchor': 'end' }); gt.textContent = g0; svg.appendChild(gt);
+      }
+      data.forEach(function (d, i) {
+        var h = d.v / top * plotH, x = padL + i * slot + (slot - bw) / 2, y = padT + plotH - h;
+        var g = svgEl('g', { 'class': 'row', tabindex: 0 });
+        if (h > 0) g.appendChild(svgEl('path', { 'class': 'bar', d: barPath(x, y, bw, h, false), fill: colour }));
+        var v = svgEl('text', { 'class': 'val', x: x + bw / 2, y: y - 6, 'text-anchor': 'middle' }); v.textContent = nf.format(d.v); g.appendChild(v);
+        var l = svgEl('text', { x: x + bw / 2, y: H - 8, 'text-anchor': 'middle' }); l.textContent = d.k; g.appendChild(l);
+        var hit = svgEl('rect', { 'class': 'hit', x: padL + i * slot, y: padT - 20, width: slot, height: plotH + 20, rx: 6 }); g.appendChild(hit);
+        g.addEventListener('mouseenter', function () { showTip(tipFn(d), hit); });
+        g.addEventListener('focus', function () { showTip(tipFn(d), hit); });
+        g.addEventListener('mouseleave', hideTip); g.addEventListener('blur', hideTip);
+        g.setAttribute('aria-label', d.k + ': ' + d.v + ' sign-ups');
+        svg.appendChild(g);
+      });
+      host.appendChild(svg);
+    }
+
+    function table(host, head, rows) {
+      host.innerHTML = '<table><thead><tr>' + head.map(function (h) { return '<th scope="col">' + h + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        rows.map(function (r) { return '<tr>' + r.map(function (c, i) { return i === 0 ? '<th scope="row" style="text-align:left;font-weight:400;color:var(--ink)">' + c + '</th>' : '<td>' + c + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+    }
+
+    function render(aud) {
+      var rows = ROWS.filter(function (r) { return aud === 'All' || r[3] === aud; });
+      var tot = blank(); rows.forEach(function (r) { add(tot, r); });
+
+      // Headline numbers
+      el('t-reach').textContent = nf.format(tot.reach);
+      el('t-reach-sub').textContent = nf.format(tot.clicks) + ' clicks (' + pct(tot.clicks / tot.reach) + ')';
+      el('t-signups').textContent = nf.format(tot.signups);
+      el('t-signups-sub').textContent = 'Target ' + GOAL[aud] + ' · ' + Math.round(tot.signups / GOAL[aud] * 100) + '% of target';
+      el('t-spend').textContent = money(tot.spend, 0);
+      el('t-spend-sub').textContent = aud === 'All' ? 'Of the £5,000 total budget' : 'For this audience';
+      el('t-cps').textContent = money(tot.signups ? tot.spend / tot.signups : 0, 2);
+      el('t-cps-sub').textContent = 'Ads and email spend only';
+
+      // Best and worst items
+      var items = groupBy(rows, function (r) { return r[4]; });
+      var list = items.order.map(function (k) { var t = items.map[k]; return { k: k, t: t, cps: t.signups ? t.spend / t.signups : 0 }; });
+      var best = list.slice().sort(function (a, b) { return b.t.signups - a.t.signups; })[0];
+      var paid = list.filter(function (d) { return d.t.spend > 0; });
+      var worst = paid.sort(function (a, b) { return b.cps - a.cps; })[0];
+      el('best-name').textContent = best.k;
+      el('best-sub').textContent = nf.format(best.t.signups) + ' sign-ups · ' + money(best.cps, 2) + ' per sign-up';
+      el('worst-name').textContent = worst ? worst.k : 'None';
+      el('worst-sub').textContent = worst ? money(worst.cps, 2) + ' per sign-up · ' + nf.format(worst.t.signups) + ' sign-ups from ' + money(worst.t.spend, 0) : 'No paid items for this audience.';
+
+      // By channel
+      var ch = groupBy(rows, planChannel);
+      var chans = CHANNELS.filter(function (c) { return ch.map[c]; }).map(function (c) { var t = ch.map[c]; return { k: c, t: t }; });
+
+      var clickData = chans.map(function (d) { return { k: d.k, v: d.t.clicks / d.t.reach, t: d.t }; });
+      hBars(el('c-click'), clickData, pct, 'var(--green-soft)', function (d) {
+        return '<b>' + d.k + '</b><br>Click rate ' + pct(d.v) + '<br>' + nf.format(d.t.clicks) + ' clicks from ' + nf.format(d.t.reach) + ' reached';
+      });
+      table(el('tb-click'), ['Channel', 'Reached', 'Clicks', 'Click rate'], clickData.map(function (d) { return [d.k, nf.format(d.t.reach), nf.format(d.t.clicks), pct(d.v)]; }));
+
+      var cpsData = chans.map(function (d) { return { k: d.k, v: d.t.signups ? d.t.spend / d.t.signups : 0, t: d.t }; });
+      hBars(el('c-cps'), cpsData, function (v) { return money(v, 2); }, 'var(--berry)', function (d) {
+        return '<b>' + d.k + '</b><br>' + money(d.v, 2) + ' per sign-up<br>' + money(d.t.spend, 0) + ' spend · ' + nf.format(d.t.signups) + ' sign-ups' + (d.t.spend === 0 ? '<br>No spend recorded' : '');
+      });
+      table(el('tb-cps'), ['Channel', 'Spend', 'Sign-ups', 'Cost per sign-up'], cpsData.map(function (d) { return [d.k, money(d.t.spend, 0), nf.format(d.t.signups), money(d.v, 2)]; }));
+
+      // By week
+      var wk = groupBy(rows, function (r) { return 'Week ' + r[1]; });
+      var weekData = [1, 2, 3, 4].map(function (w) { var t = wk.map['Week ' + w] || blank(); return { k: 'Week ' + w, v: t.signups, t: t }; });
+      vBars(el('c-week'), weekData, 'var(--green)', function (d) {
+        return '<b>' + d.k + '</b><br>' + nf.format(d.v) + ' sign-ups<br>' + nf.format(d.t.clicks) + ' clicks · ' + money(d.t.spend, 0) + ' spend';
+      });
+      table(el('tb-week'), ['Week', 'Clicks', 'Sign-ups', 'Spend', 'Cost per sign-up'], weekData.map(function (d) { return [d.k, nf.format(d.t.clicks), nf.format(d.v), money(d.t.spend, 0), money(d.v ? d.t.spend / d.v : 0, 2)]; }));
+    }
+
+    // Filter buttons
+    var chips = document.querySelectorAll('.chip');
+    Array.prototype.forEach.call(chips, function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call(chips, function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        hideTip();
+        render(b.getAttribute('data-aud'));
+      });
+    });
+    var current = 'All', lastW = 0, timer;
+    Array.prototype.forEach.call(chips, function (b) { b.addEventListener('click', function () { current = b.getAttribute('data-aud'); }); });
+    // Redraw the charts at the new width when the screen turns or the window changes size.
+    window.addEventListener('resize', function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { var w = el('c-click').clientWidth; if (w !== lastW) { lastW = w; hideTip(); render(current); } }, 150);
+    });
+    document.addEventListener('touchstart', function (e) { if (!e.target.closest || !e.target.closest('g.row')) hideTip(); }, { passive: true });
+    window.addEventListener('scroll', hideTip, { passive: true });
+    render('All');
+    lastW = el('c-click').clientWidth;
+  })();
+  </script>
+</body>
+</html>

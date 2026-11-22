@@ -1,0 +1,97 @@
+date,week,channel,audience,item,reached,opens,clicks,page_visits,sign_ups,spend_gbp
+2026-11-23,1,Email,Dog owners,Launch email,9000,1704,169,145,44,60
+2026-11-23,1,Facebook,Dog owners,Facebook post 1,2369,,37,31,6,38
+2026-11-23,1,Instagram,Dog owners,Instagram post,2968,,14,12,1,52
+2026-11-23,1,LinkedIn,Vet practices,LinkedIn post 1,334,,8,7,2,0
+2026-11-24,1,Email,Dog owners,Launch email,0,505,49,42,13,0
+2026-11-24,1,Facebook,Dog owners,Facebook post 1,2307,,37,31,6,38
+2026-11-24,1,Instagram,Dog owners,Instagram post,2889,,12,10,1,52
+2026-11-24,1,LinkedIn,Vet practices,LinkedIn post 1,376,,9,8,2,0
+2026-11-25,1,Email,Dog owners,Launch email,0,189,18,15,4,0
+2026-11-25,1,Email,Vet practices,Vet practice email,800,269,55,47,19,60
+2026-11-25,1,Facebook,Dog owners,Facebook post 1,2205,,27,23,4,38
+2026-11-25,1,Instagram,Dog owners,Instagram post,3075,,16,13,1,52
+2026-11-25,1,LinkedIn,Vet practices,LinkedIn post 1,350,,7,6,2,0
+2026-11-26,1,Email,Vet practices,Vet practice email,0,77,15,13,5,0
+2026-11-26,1,Facebook,Dog owners,Facebook post 1,2144,,31,26,5,38
+2026-11-26,1,Instagram,Dog owners,Instagram post,2980,,15,13,1,52
+2026-11-26,1,LinkedIn,Vet practices,LinkedIn post 1,359,,9,8,2,0
+2026-11-27,1,Email,Vet practices,Vet practice email,0,31,6,5,2,0
+2026-11-27,1,Facebook,Dog owners,Facebook post 1,2127,,29,24,4,38
+2026-11-27,1,Instagram,Dog owners,Instagram post,2995,,17,14,1,52
+2026-11-27,1,LinkedIn,Vet practices,LinkedIn post 1,366,,9,8,2,0
+2026-11-28,1,Facebook,Dog owners,Facebook post 1,2682,,40,34,6,38
+2026-11-28,1,Instagram,Dog owners,Instagram post,3318,,17,14,1,52
+2026-11-28,1,LinkedIn,Vet practices,LinkedIn post 1,153,,3,3,1,0
+2026-11-29,1,Facebook,Dog owners,Facebook post 1,2561,,31,26,5,38
+2026-11-29,1,Instagram,Dog owners,Instagram post,3456,,19,16,1,52
+2026-11-29,1,LinkedIn,Vet practices,LinkedIn post 1,165,,4,3,1,0
+2026-11-30,2,Facebook,Dog owners,Facebook post 1,2274,,31,26,5,38
+2026-11-30,2,Instagram,Dog owners,Instagram post,3148,,16,13,1,52
+2026-11-30,2,LinkedIn,Vet practices,LinkedIn post 1,333,,6,5,1,0
+2026-12-01,2,Facebook,Dog owners,Facebook post 1,2173,,29,24,4,38
+2026-12-01,2,Instagram,Dog owners,Instagram post,3195,,18,15,1,52
+2026-12-01,2,LinkedIn,Vet practices,LinkedIn post 1,328,,8,7,2,0
+2026-12-02,2,Facebook,Dog owners,Facebook post 1,2230,,31,26,5,38
+2026-12-02,2,Instagram,Dog owners,Instagram post,2912,,16,13,1,52
+2026-12-02,2,LinkedIn,Vet practices,LinkedIn post 1,325,,7,6,2,0
+2026-12-03,2,Facebook,Dog owners,Facebook post 1,2065,,29,24,4,38
+2026-12-03,2,Instagram,Dog owners,Instagram post,2807,,15,13,1,52
+2026-12-03,2,LinkedIn,Vet practices,LinkedIn post 1,342,,8,7,2,0
+2026-12-04,2,Facebook,Dog owners,Facebook post 1,2288,,33,28,5,38
+2026-12-04,2,Instagram,Dog owners,Instagram post,3137,,16,13,1,52
+2026-12-04,2,LinkedIn,Vet practices,LinkedIn post 1,323,,7,6,2,0
+2026-12-05,2,Facebook,Dog owners,Facebook post 1,2526,,40,34,6,38
+2026-12-05,2,Instagram,Dog owners,Instagram post,3424,,20,17,2,52
+2026-12-05,2,LinkedIn,Vet practices,LinkedIn post 1,153,,3,3,1,0
+2026-12-06,2,Facebook,Dog owners,Facebook post 1,2432,,33,28,5,38
+2026-12-06,2,Instagram,Dog owners,Instagram post,3708,,20,17,2,52
+2026-12-06,2,LinkedIn,Vet practices,LinkedIn post 1,153,,3,3,1,0
+2026-12-07,3,Email,Dog owners,Reminder email,9000,2292,269,231,76,60
+2026-12-07,3,Facebook,Dog owners,Facebook post 2,2350,,22,18,3,38
+2026-12-07,3,Instagram,Dog owners,Instagram post,2990,,9,8,1,52
+2026-12-07,3,LinkedIn,Vet practices,LinkedIn post 2,375,,8,7,2,0
+2026-12-08,3,Email,Dog owners,Reminder email,0,587,75,64,21,0
+2026-12-08,3,Facebook,Dog owners,Facebook post 2,2206,,18,15,3,38
+2026-12-08,3,Instagram,Dog owners,Instagram post,2888,,10,8,1,52
+2026-12-08,3,LinkedIn,Vet practices,LinkedIn post 2,367,,7,6,2,0
+2026-12-09,3,Email,Dog owners,Reminder email,0,230,31,27,9,0
+2026-12-09,3,Facebook,Dog owners,Facebook post 2,2103,,18,15,3,38
+2026-12-09,3,Instagram,Dog owners,Instagram post,2806,,10,8,1,52
+2026-12-09,3,LinkedIn,Vet practices,LinkedIn post 2,351,,8,7,2,0
+2026-12-10,3,Facebook,Dog owners,Facebook post 2,2041,,21,18,3,38
+2026-12-10,3,Instagram,Dog owners,Instagram post,2957,,10,8,1,52
+2026-12-10,3,LinkedIn,Vet practices,LinkedIn post 2,341,,8,7,2,0
+2026-12-11,3,Facebook,Dog owners,Facebook post 2,2336,,20,17,3,38
+2026-12-11,3,Instagram,Dog owners,Instagram post,2767,,8,7,1,52
+2026-12-11,3,LinkedIn,Vet practices,LinkedIn post 2,360,,7,6,2,0
+2026-12-12,3,Facebook,Dog owners,Facebook post 2,2580,,24,20,4,38
+2026-12-12,3,Instagram,Dog owners,Instagram post,3495,,13,11,1,52
+2026-12-12,3,LinkedIn,Vet practices,LinkedIn post 2,155,,3,3,1,0
+2026-12-13,3,Facebook,Dog owners,Facebook post 2,2523,,22,18,3,38
+2026-12-13,3,Instagram,Dog owners,Instagram post,3220,,12,10,1,52
+2026-12-13,3,LinkedIn,Vet practices,LinkedIn post 2,168,,3,3,1,0
+2026-12-14,4,Facebook,Dog owners,Facebook post 2,2336,,34,29,5,38
+2026-12-14,4,Instagram,Dog owners,Instagram post,2879,,15,13,1,52
+2026-12-14,4,LinkedIn,Vet practices,LinkedIn post 2,353,,9,8,2,0
+2026-12-15,4,Facebook,Dog owners,Facebook post 2,2185,,30,25,4,38
+2026-12-15,4,Instagram,Dog owners,Instagram post,3121,,18,15,1,52
+2026-12-15,4,LinkedIn,Vet practices,LinkedIn post 2,347,,8,7,2,0
+2026-12-16,4,Facebook,Dog owners,Facebook post 2,2351,,38,32,6,38
+2026-12-16,4,Instagram,Dog owners,Instagram post,3081,,16,13,1,52
+2026-12-16,4,LinkedIn,Vet practices,LinkedIn post 2,333,,8,7,2,0
+2026-12-17,4,Email,Dog owners,Last chance email,9000,1993,231,199,62,60
+2026-12-17,4,Facebook,Dog owners,Facebook post 2,2216,,32,27,5,38
+2026-12-17,4,Instagram,Dog owners,Instagram post,2834,,13,11,1,52
+2026-12-17,4,LinkedIn,Vet practices,LinkedIn post 2,371,,7,6,2,0
+2026-12-18,4,Email,Dog owners,Last chance email,0,575,63,54,17,0
+2026-12-18,4,Facebook,Dog owners,Facebook post 2,2260,,30,25,4,38
+2026-12-18,4,Instagram,Dog owners,Instagram post,3040,,16,13,1,52
+2026-12-18,4,LinkedIn,Vet practices,LinkedIn post 2,352,,8,7,2,0
+2026-12-19,4,Email,Dog owners,Last chance email,0,213,24,21,7,0
+2026-12-19,4,Facebook,Dog owners,Facebook post 2,2651,,37,31,6,38
+2026-12-19,4,Instagram,Dog owners,Instagram post,3698,,18,15,1,52
+2026-12-19,4,LinkedIn,Vet practices,LinkedIn post 2,158,,4,3,1,0
+2026-12-20,4,Facebook,Dog owners,Facebook post 2,2521,,39,33,6,38
+2026-12-20,4,Instagram,Dog owners,Instagram post,3572,,16,13,1,52
+2026-12-20,4,LinkedIn,Vet practices,LinkedIn post 2,149,,4,3,1,0
